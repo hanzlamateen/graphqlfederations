@@ -1,0 +1,417 @@
+{
+  "id": "appnRbcPdfUrcQNK5",
+  "tables": [
+    {
+      "name": "Stories",
+      "columns": [
+        {
+          "name": "Story Name",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "name": "Notes",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "name": "Blocking Stories",
+          "type": "foreignKey",
+          "options": {
+            "relationship": "many",
+            "table": "Stories"
+          }
+        },
+        {
+          "name": "Sprint",
+          "type": "foreignKey",
+          "options": {
+            "relationship": "one",
+            "table": "Sprints"
+          }
+        },
+        {
+          "name": "Blocks Release",
+          "type": "foreignKey",
+          "options": {
+            "relationship": "one",
+            "table": "Release Milestones"
+          }
+        },
+        {
+          "name": "Server Points",
+          "type": "select",
+          "options": {
+            "choices": [
+              "1",
+              "2",
+              "3",
+              "5",
+              "8",
+              "13",
+              "0"
+            ]
+          }
+        },
+        {
+          "name": "Client Points",
+          "type": "select",
+          "options": {
+            "choices": [
+              "1",
+              "2",
+              "3",
+              "5",
+              "8",
+              "13",
+              "0"
+            ]
+          }
+        },
+        {
+          "name": "Facet",
+          "type": "foreignKey",
+          "options": {
+            "relationship": "many",
+            "table": "Facets"
+          }
+        },
+        {
+          "name": "FhabTask",
+          "type": "number",
+          "options": {
+            "format": "integer"
+          }
+        },
+        {
+          "name": "Epics",
+          "type": "foreignKey",
+          "options": {
+            "relationship": "many",
+            "table": "Epics"
+          }
+        },
+        {
+          "name": "Built?",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "name": "So That",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "name": "story_id",
+          "type": "autoNumber",
+          "options": {}
+        },
+        {
+          "name": "Server Eng Tasks",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "name": "P[?]",
+          "type": "select",
+          "options": {
+            "choices": [
+              "P1",
+              "P2",
+              "P3"
+            ]
+          }
+        },
+        {
+          "name": "FhabURL",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "name": "Client Eng Tasks",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "name": "User Want",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "name": "Needs review",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "name": "to-be-pointed",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "name": "Release Seq No",
+          "type": "lookup",
+          "options": {}
+        }
+      ]
+    },
+    {
+      "name": "Epics",
+      "columns": [
+        {
+          "name": "Epic Name",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "name": "Description",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "name": "Stories",
+          "type": "foreignKey",
+          "options": {
+            "relationship": "many",
+            "table": "Stories"
+          }
+        },
+        {
+          "name": "Sprints",
+          "type": "lookup",
+          "options": {}
+        },
+        {
+          "name": "Facets",
+          "type": "lookup",
+          "options": {}
+        },
+        {
+          "name": "NumStories",
+          "type": "count",
+          "options": {}
+        },
+        {
+          "name": "Server Pts",
+          "type": "rollup",
+          "options": {}
+        },
+        {
+          "name": "Client Pts",
+          "type": "rollup",
+          "options": {}
+        },
+        {
+          "name": "Open Stories?",
+          "type": "rollup",
+          "options": {}
+        },
+        {
+          "name": "epic_id",
+          "type": "autoNumber",
+          "options": {}
+        },
+        {
+          "name": "Epic Title",
+          "type": "text",
+          "options": {}
+        },
+        {
+          "name": "Blocked by (Epic)",
+          "type": "foreignKey",
+          "options": {
+            "relationship": "many",
+            "table": "Epics"
+          }
+        },
+        {
+          "name": "Blocks Release",
+          "type": "foreignKey",
+          "options": {
+            "relationship": "one",
+            "table": "Release Milestones"
+          }
+        },
+        {
+          "name": "Seq",
+          "type": "lookup",
+          "options": {}
+        },
+        {
+          "name": "RobEst",
+          "type": "multiSelect",
+          "options": {
+            "choices": [
+              "XS",
+              "S",
+              "M",
+              "L",
+              "XL",
+              "XXL",
+              "XXXL"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sprints",
+      "columns": [
+        {
+          "name": "Name",
+          "type": "text",
+          "options": {}
+        },
+        {
+          "name": "Notes",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "name": "Target Release Date",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "name": "Stories",
+          "type": "foreignKey",
+          "options": {
+            "relationship": "many",
+            "table": "Stories"
+          }
+        },
+        {
+          "name": "Epics",
+          "type": "rollup",
+          "options": {}
+        },
+        {
+          "name": "Server Pts",
+          "type": "rollup",
+          "options": {}
+        },
+        {
+          "name": "Client Pts",
+          "type": "rollup",
+          "options": {}
+        }
+      ]
+    },
+    {
+      "name": "Release Milestones",
+      "columns": [
+        {
+          "name": "Name",
+          "type": "text",
+          "options": {}
+        },
+        {
+          "name": "Notes",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "name": "Attachments",
+          "type": "multipleAttachment",
+          "options": {}
+        },
+        {
+          "name": "Stories",
+          "type": "foreignKey",
+          "options": {
+            "relationship": "many",
+            "table": "Stories"
+          }
+        },
+        {
+          "name": "NumStories",
+          "type": "count",
+          "options": {}
+        },
+        {
+          "name": "Sequence",
+          "type": "number",
+          "options": {
+            "format": "integer"
+          }
+        },
+        {
+          "name": "Epics",
+          "type": "foreignKey",
+          "options": {
+            "relationship": "many",
+            "table": "Epics"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Facets",
+      "columns": [
+        {
+          "name": "Facet Name",
+          "type": "text",
+          "options": {}
+        },
+        {
+          "name": "Notes",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "name": "App Section",
+          "type": "foreignKey",
+          "options": {
+            "relationship": "many",
+            "table": "App Sections"
+          }
+        },
+        {
+          "name": "Stories",
+          "type": "foreignKey",
+          "options": {
+            "relationship": "many",
+            "table": "Stories"
+          }
+        },
+        {
+          "name": "Server Pts",
+          "type": "rollup",
+          "options": {}
+        },
+        {
+          "name": "Client Pts",
+          "type": "rollup",
+          "options": {}
+        },
+        {
+          "name": "Epics",
+          "type": "lookup",
+          "options": {}
+        }
+      ]
+    },
+    {
+      "name": "App Sections",
+      "columns": [
+        {
+          "name": "Name",
+          "type": "text",
+          "options": {}
+        },
+        {
+          "name": "Notes",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "name": "Facets",
+          "type": "foreignKey",
+          "options": {
+            "relationship": "many",
+            "table": "Facets"
+          }
+        }
+      ]
+    }
+  ]
+}
