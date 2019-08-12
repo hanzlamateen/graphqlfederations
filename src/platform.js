@@ -9,7 +9,7 @@ module.exports = {
             info: String
         }
     `,
-    resolver: {
+    resolvers: {
         platform: () => {
             return {info: os.platform()};
         }

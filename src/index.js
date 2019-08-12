@@ -4,38 +4,35 @@ const python = require('./python');
 const platform = require('./platform');
 const text = require('./text');
 const Airtable = require('./airtable');
+const Calendar = require('./calendar');
 
+// Airtable
 let airtable = new Airtable("airtable_api_key");
+
+// Google Calendar
+let calendar = new Calendar();
 
 const types = [
     python.schema,
     platform.schema,
     text.schema,
-    airtable.schema
+    airtable.schema,
+    calendar.schema
 ];
 
 const typeDefs = mergeTypes(types, { all: true });
 
 var resolvers = {
     Query: {
-        ...python.resolver,
-        ...platform.resolver,
-        ...text.resolver
-    }
-}
-
-for (let item in airtable.resolvers) {
-    var first = item.charAt(0);
-    
-    // first character is a lowercase letter
-    if (first === first.toLowerCase() && first !== first.toUpperCase()) {
-        resolvers.Query[item] = airtable.resolvers[item];
-    }
-    else {
-        resolvers[item] = airtable.resolvers[item];
-    }
-}
-        
+        ...python.resolvers,
+        ...platform.resolvers,
+        ...text.resolvers,
+        ...airtable.queryResolvers,
+        ...calendar.queryResolvers
+    },
+    ...airtable.typeResolvers,
+    ...calendar.typeResolvers
+}    
 
 const server = new ApolloServer({
     typeDefs,

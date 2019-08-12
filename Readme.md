@@ -1,4 +1,8 @@
-# Using this script
+# GraphQL Federations
+
+This is a federation of graphql for Airtable, Google Calendar
+
+## Using this script
 
 Download the packages using by using following command:
 ```javascript
@@ -43,3 +47,9 @@ Run following sample query in playground:
     }
 }
 ```
+
+## References:
+* https://github.com/Urigo/merge-graphql-schemas#merging-type-definitions
+* https://github.com/thomascullen/airtable-graphql
+* https://github.com/rlancer/gapi-to-graphql
+* https://timonweb.com/tutorials/how-to-enable-ecmascript-6-imports-in-nodejs/

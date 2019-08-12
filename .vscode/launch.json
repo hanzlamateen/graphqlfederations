@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}\\index.js"
+            "args": ["-r", "esm", "${workspaceFolder}\\src\\index.js"]
         }
     ]
 }

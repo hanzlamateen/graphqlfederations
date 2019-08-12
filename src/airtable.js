@@ -20,11 +20,27 @@ class Airtable {
     this.api = airtable.base(schema.id);
     this.schema = convertSchema(schema, this.columns);
 
-    this.resolvers = createResolvers(
+    var allResolvers = createResolvers(
       schema,
       this.api,
       this.columns
     );
+
+    this.queryResolvers = {};
+    this.typeResolvers = {};
+
+    for (let item in allResolvers) {
+      var first = item.charAt(0);
+
+      // first character is a lowercase letter
+      if (first === first.toLowerCase() && first !== first.toUpperCase()) {
+        this.queryResolvers[item] = allResolvers[item];
+      }
+      else {
+        this.typeResolvers[item] = allResolvers[item];
+      }
+    }
+
     this.schema = printSchema(this.schema);
   }
 

@@ -7,7 +7,7 @@ module.exports = {
             info: String
         }
     `,
-    resolver: {
+    resolvers: {
         text: () => {
             return {info: 'foo'};
         }

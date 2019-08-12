@@ -9,7 +9,7 @@ module.exports = {
             python: Python
         }
     `,
-    resolver: {
+    resolvers: {
         python: () => {
             return {info: python.PythonShell.getVersionSync().trim()};
         }
